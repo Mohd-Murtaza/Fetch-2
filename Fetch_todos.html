@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todos</title>
+    <style>
+        #main{
+            padding: 5px;
+            margin: auto;
+            width: 80%;
+        }
+        #head,#rows{
+            width: 100%;
+            border-bottom: 2px solid black;
+        }
+        .trOdd{
+            background-color: #9AD0C3;
+            font-weight: 700;
+            
+        }
+        .trEven{
+            background-color: #CDE8E1;
+            font-weight: 700;
+        }
+        th:nth-child(1),td:nth-child(1)
+        {
+            text-align: center;
+            width: 10%;
+        }
+        th:nth-child(2),td:nth-child(2)
+        {
+            width: 70%;
+        }
+        th:nth-child(3),td:nth-child(3)
+        {
+            text-align: center;
+            width: 20%;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="main">
+        <table id="head">
+            <tr style="background-color: #83C2B7; font-size: 20px; font-weight: 900;">
+                <th>Id</th>
+                <th>Title</th>
+                <th>Status</th>
+            </tr>
+        </table>
+        <table id="rows">
+
+        </table>
+
+    </div>
+</body>
+<script>
+    let display=document.querySelector("#rows");
+    let dataDetails;
+    async function init(){
+        try{
+            let response= await fetch(`https://jsonplaceholder.typicode.com/todos`);
+            let data=await response.json();
+            printData(data);
+        }
+        catch (err){
+            console.log(err);
+        }
+    }
+    init()
+    printData=(data)=>{
+        let bag=``;
+        data.forEach((ele,index) => {
+            if(index%2!=0)
+            {
+                bag+=`<tr class="trOdd">
+                         <td>${ele.id}</td>
+                         <td>${ele.title}</td>
+                         <td>${ele.completed}</td>
+                     </tr>`
+            }
+            else{
+                bag+=`<tr class="trEven">
+                         <td>${ele.id}</td>
+                         <td>${ele.title}</td>
+                         <td>${ele.completed}</td>
+                     </tr>`
+            }
+        });
+        display.innerHTML=bag;
+    }
+</script>
+</html>

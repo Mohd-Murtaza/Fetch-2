@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch-Scholar</title>
+    <style>
+        #navbar{
+            margin: auto;
+            padding: 10px;
+            width: 90%;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+        }
+        #searchInput{
+            width: 400px;
+            height: 30px;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 10px;
+            border: 2px solid black;
+        }
+        #searchInput:hover{
+            background-color: #7fffd449;
+            border: 2px solid white;
+        }
+        #searchbtn,.lowToHigh,.highToLow{
+            font-size: 16px;
+            font-weight: 700;
+            width: 80px;
+            height: 30px;
+            background-color: black;
+            color: aquamarine;
+            border: none;
+            transition: .5s;
+        }
+        #searchbtn:hover,.lowToHigh:hover,.highToLow:hover{
+            cursor: pointer;
+            background-color: aquamarine;
+            color: black;
+            border-radius: 8px;
+        }
+        .sortbtns{
+            margin-left: 270px;
+            font-size: 24px;
+            font-weight: 900;
+        }
+        .lowToHigh,.highToLow{
+           margin-left: 10px;
+           width: 180px;
+        }
+        #productDiv{
+            margin: auto;
+            margin-top: 50px;
+            width: 90%;
+            display: grid;
+            grid-template-columns: 300px 300px 300px 300px;
+            grid-template-rows: auto;
+            gap: 20px;
+        }
+        .productCard{
+            padding: 18px;
+            background-color: rgba(127, 255, 212, 0.288);
+            box-shadow: rgb(127, 255, 212) 0px 5px 15px;
+        }
+        .productCard:hover{
+            border: none;
+            padding: none;
+            background-color: white;
+            border-radius: 20px;
+        }
+        img{
+            margin: auto;
+            width: 150px;
+            height: 150px;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <input id="searchInput" type="text" placeholder="Search Something">
+        <button id="searchbtn" onclick="search()">Search</button>
+        <span class="sortbtns">Sort By:- <button class="lowToHigh" onclick="lowToHigh()">Price(Low to High)</button><button class="highToLow" onclick="highToLow()">Price(High to Low)</button></span>
+    </div>
+    <div id="productDiv">
+        
+    </div>
+</body>
+<script>
+    let displayProducts=document.querySelector("#productDiv")
+    let searchInput=document.querySelector("#searchInput");
+    let productsData
+    async function init(){
+        let res=await fetch(`https://fakestoreapi.com/products`);
+        productsData=await res.json();
+        displayData(productsData);
+    }
+    displayData=(data)=>{
+        bag=``;
+        data.forEach(ele => { 
+            bag+=`
+            <div class="productCard">
+                <img src="${ele.image}" alt="">
+                <h3>Item:- <span>${ele.title}</span></h3>
+                <h4>description:- <span>${ele.description}</span></h4>
+                <h3>Price:- <span>${ele.price}</span></h3>
+                <h4>Category:- <span>${ele.category}</span></h4>
+            </div>
+            `
+        });
+        displayProducts.innerHTML=bag
+    }
+let searchData
+let checkSearch;
+    search=()=>{
+        checkSearch=true;
+        let searchText=searchInput.value.toLowerCase();
+        searchData=productsData.filter(ele=>{
+            let title=ele.title.toLowerCase();
+            return title.includes(searchText)
+        })
+        if(searchData.length){
+            displayData(searchData);
+        }
+        else{
+            displayProducts.innerHTML=`<h1>This Item Not Found</h1>`
+        }
+    }
+    let sortData;
+    getSort=()=>{
+        sortData=checkSearch?searchData:productsData;
+    }
+    function lowToHigh(){
+        getSort();
+        let lowPrice=sortData.sort((a,b)=> a.price-b.price);
+        displayData(lowPrice);
+    }
+    function highToLow(){
+        getSort();
+        let highPrice=sortData.sort((a,b)=> b.price-a.price);
+        displayData(highPrice);
+    }
+    init()
+</script>
+</html>

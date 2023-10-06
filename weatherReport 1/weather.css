@@ -1,0 +1,96 @@
+body{
+    padding: 0%;
+    margin: 0%;
+}
+#main{
+    margin: 0%;
+    width: 100%;
+    background-color: #F2F2F2;
+}
+#searchBarDiv{
+    margin: auto;
+    width: 650px;
+    height: 50px;
+    background-color: #bb86fc85;
+    border-radius: 10px;
+}
+#searchInput,#searchButton{
+    margin: auto;
+    border: none;
+    margin-top: 5px;
+    margin-left: 10px;
+    width: 500px;
+    height: 25px;
+    border-radius: 10px;
+}
+#searchButton{
+    width: 110px;
+    color: white;
+    background-color: #48484A;
+    font-size: 18px;
+    font-weight: 700;
+}
+#displayDiv{
+    display: flex;
+    justify-content: space-around;
+    padding: 50px;
+}
+#weatherDetailsDiv,#showMapDiv{
+    width: 500px;
+    height: 400px;
+    box-shadow: #bb86fc85 0px 5px 15px;
+}
+#showMapDiv{
+    width: 700px;
+    height: 400px;
+}
+/* weather details style */
+.cityName{
+    text-align: center;
+}
+#temp{
+    width: 100%;
+    height: auto;
+    background-color: #bb86fc85;
+    display: flex;
+    justify-content: start;
+}
+.weatherIcon{
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 5px 0px 15px;
+}
+.currentTemp{
+    font-size: 40px;
+    font-weight: 900;
+}
+#min-maxTemp{
+    display: flex;
+    justify-content: space-evenly;
+}
+#minTemp,#maxTemp{
+    padding: 10px;
+}
+.tempImg,.sunImg{
+    width: 40px;
+    height: 40px;
+    margin-left: 35%;
+}
+#minTemp>h3,#maxTemp>h3,.sunRise>h3,.sunSet>h3{
+    margin: 0%;
+}
+hr{
+
+    border-radius: 100%;
+    border: 2px solid #bb86fc85;
+}
+h4{
+    text-align: center;
+    font-size: 24px;
+    margin: 0%;
+}
+#sunDetailsDiv{
+    display: flex;
+    justify-content: space-evenly;
+}
