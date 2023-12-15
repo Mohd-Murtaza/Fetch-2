@@ -1,0 +1,182 @@
+body{
+    padding: 0%;
+    margin: 0%;
+}
+#main{
+    margin: 0%;
+    width: 100%;
+    height: 100vh;
+    background-color: #F2F2F2;
+}
+#searchBarDiv{
+    margin: auto;
+    width: 650px;
+    height: 50px;
+    background-color: #bb86fc85;
+    border-radius: 10px;
+}
+#searchInput,#searchButton{
+    margin: auto;
+    border: none;
+    font-weight: 700;
+    margin-top: 5px;
+    margin-left: 10px;
+    width: 500px;
+    height: 25px;
+    border-radius: 10px;
+}
+#searchButton{
+    width: .5cm;
+    color: rgb(0, 0, 0);
+    background-color: #ffffff;
+    font-size: 18px;
+    font-weight: 700;
+    transition: .5s;
+}
+#searchButton:hover{
+    width: 110px;
+    background-color: white;
+    color: black;
+}
+#displayDiv{
+    display: flex;
+    justify-content: space-around;
+    padding: 25px 50px;
+}
+#weatherDetailsDiv{
+    transition: .5s;
+}
+#weatherDetailsDiv,#showMapDiv{
+    width: 500px;
+    height: 400px;
+    margin-top: 0%;
+    box-shadow: #bb86fc85 0px 5px 15px;
+}
+#showMapDiv{
+    width: 700px;
+    height: 400px;
+}
+/* weather details style */
+.cityName{
+    text-align: center;
+}
+.myNameText{
+    text-align: end;
+    margin-top: 310px;
+    color: #bb86fc;
+}
+#temp{
+    width: 100%;
+    height: auto;
+    background-color: #bb86fc85;
+    display: flex;
+    justify-content: start;
+    transition: .5s;
+}
+.weatherIcon{
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 10px 2px 15px;
+}
+.currentTemp{
+    font-size: 40px;
+    font-weight: 900;
+}
+#min-maxTemp{
+    display: flex;
+    justify-content: space-evenly;
+    /* box-shadow: rgba(0, 0, 0, 0.35) 5px 0px 15px; */
+}
+#minTemp,#maxTemp{
+    padding: 10px;
+    /* box-shadow: rgba(0, 0, 0, 0.35) 5px 0px 15px; */
+}
+.tempImg,.sunImg{
+    width: 40px;
+    height: 40px;
+    margin-left: 35%;
+}
+#minTemp>h3,#maxTemp>h3,.sunRise>h3,.sunSet>h3{
+    margin: 0%;
+}
+hr{
+
+    border-radius: 100%;
+    border: 2px solid #bb86fc85;
+}
+h4{
+    text-align: center;
+    font-size: 24px;
+    margin: 0%;
+}
+#sunDetailsDiv{
+    display: flex;
+    justify-content: space-evenly;
+}
+#weatherDetailsDiv:hover{
+    cursor: pointer;
+    background-color: #ddc2ff6f;
+    scale: 1.05;
+    /* border: 4px solid white; */
+    #temp{
+        background-color: white;
+    }
+    .weatherHr{
+        border-radius: 100%;
+        border: 2px solid black;
+    }
+    .myNameText{
+        color: black;
+        text-align: end;
+        font-weight: 900;
+    }
+}
+/* forcast div style  */
+#fiveDaysForecastDiv{
+    /* box-shadow: #bb86fc85 0px 5px 15px; */
+    margin: auto;
+    width: 80%;
+    height: auto;
+    display: flex;
+    justify-content: space-around;
+}
+#forecastCard{
+    border-radius: 10px;
+    box-shadow: #bb86fc85 0px 5px 15px;
+    transition: .5s;
+}
+#forecastCard>h4{
+    font-weight: 900;
+}
+#forecastTempDiv{
+    transition: .5s;
+    background-color: #bb86fc85;
+    display: flex;
+    justify-content: space-evenly;
+}
+#forecastTempDiv>img{
+    box-shadow: rgba(0, 0, 0, 0.35) -10px 0px 15px;
+    width: 50px;
+    height: 50px;
+    margin: 0%;
+}
+#forecastTempDiv>h2{
+    font-size: 34px;
+    margin: 5px;
+}
+.min-maxTempText{
+    margin-top: 0%;
+}
+#forecastCard:hover{
+    cursor: pointer;
+    background-color: #bb86fc85;
+    /* border: 4px solid white; */
+    #forecastTempDiv{
+        background-color: rgb(255, 255, 255);
+    }
+    .forecastHr{
+        border-radius: 100%;
+        border: 2px solid black;
+    }
+}
